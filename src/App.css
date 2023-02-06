@@ -1,38 +1,50 @@
-.App {
-  text-align: center;
+body {
+  background-color: transparent;
+  vertical-align: middle;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  background: url("https://ifh.cc/g/SJ1wfP.jpg") no-repeat 50% 50% fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.layout {
+  margin: auto;
+  max-width: 1200px;
+  min-width: 800px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.nav {
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+  background-color: green;
+  font-size: 20px;
+  display: flex;
+  max-width: 1200px;
+  min-width: 800px;
 }
 
-.App-link {
-  color: #61dafb;
+.add {
+  max-width: 1200px;
+  min-width: 800px;
+  background-color: aqua;
+  align-items: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin: auto;
+  justify-content: center;
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn {
+  margin-left: 20px;
 }
