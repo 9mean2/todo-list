@@ -36,9 +36,7 @@ function App() {
   return (
     <div className="back">
       <div className="layout">
-        <div className="nav">
-          <label>My todo list</label>
-        </div>
+        <img className="nav" src="https://ifh.cc/g/HHGWh7.png" />
 
         <div className="add">
           제목 <input value={title} onChange={titleChangeHandler} />

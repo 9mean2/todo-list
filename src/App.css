@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background-color: transparent;
   vertical-align: middle;
@@ -5,7 +13,8 @@ body {
 }
 
 html {
-  background: url("https://ifh.cc/g/SJ1wfP.jpg") no-repeat 50% 50% fixed;
+  font-family: "yg-jalnan";
+  background: url("https://ifh.cc/g/GqWSfp.jpg") no-repeat 50% 50% fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13,6 +22,7 @@ html {
 }
 
 .layout {
+  font-family: "yg-jalnan";
   margin: auto;
   max-width: 1200px;
   min-width: 800px;
@@ -21,12 +31,10 @@ html {
 }
 
 .nav {
-  margin: auto;
   padding-top: 5%;
-  padding-bottom: 5%;
+  object-fit: fill;
+  margin: auto;
   justify-content: center;
-
-  background-color: green;
   font-size: 20px;
   display: flex;
   max-width: 1200px;
@@ -36,7 +44,8 @@ html {
 .add {
   max-width: 1200px;
   min-width: 800px;
-  background-color: aqua;
+
+  border-radius: 10px;
   align-items: center;
   padding-top: 5%;
   padding-bottom: 5%;
