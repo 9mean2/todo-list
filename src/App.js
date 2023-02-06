@@ -39,21 +39,35 @@ function App() {
         <img className="nav" src="https://ifh.cc/g/HHGWh7.png" />
 
         <div className="add">
-          제목 <input value={title} onChange={titleChangeHandler} />
-          내용 <input value={body} onChange={bodyChangeHandler} />
+          <div className="input__container">
+            Title{" "}
+            <input
+              className="input"
+              value={title}
+              onChange={titleChangeHandler}
+            />
+          </div>
+          <div className="input__container">
+            Contents{" "}
+            <input
+              className="input"
+              value={body}
+              onChange={bodyChangeHandler}
+            />
+          </div>
           <br />
           <button
             type="button"
-            class="btn btn-success"
+            className="btn btn-outline-info"
             onClick={buttonClickHandler}
           >
-            추가하기
+            ✏️
           </button>
         </div>
         <div className="app-style">
           {todo.map(function (item) {
             return (
-              <User
+              <Todo
                 key={item.id}
                 item={item}
                 deleteButtonClickHandler={deleteButtonClickHandler}
@@ -66,11 +80,20 @@ function App() {
   );
 }
 
-const User = ({ item, deleteButtonClickHandler }) => {
+const Todo = ({ item, deleteButtonClickHandler }) => {
   return (
-    <div key={item.id} className="component-style">
-      {item.body} - {item.title}{" "}
-      <button onClick={() => deleteButtonClickHandler(item.id)}>x</button>
+    <div key={item.id} className="todolist">
+      <h1>{item.title}</h1> <br /> {item.body} <br />
+      <button
+        type="button"
+        className="btn btn-outline-danger"
+        onClick={() => deleteButtonClickHandler(item.id)}
+      >
+        Delete 👋
+      </button>
+      <button type="button" class="btn btn-outline-success">
+        Success
+      </button>
     </div>
   );
 };
