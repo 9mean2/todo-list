@@ -6,7 +6,12 @@ function App() {
     { id: 0, title: "숨쉬기운동", body: "숨을 마셔보자", isDone: false },
   ]);
 
+  const [todon, setTodon] = useState([
+    { id: 1, title: "숨참기운동", body: "숨을 참아보자", isDone: false },
+  ]);
+
   const [title, setTitle] = useState("");
+
   const [body, setBody] = useState("");
 
   const titleChangeHandler = (event) => {
@@ -17,18 +22,42 @@ function App() {
     setBody(event.target.value);
   };
 
+  const addTodon = (id) => {
+    const newTodo = todo.filter((todo) => todo.id !== id);
+    const newTodon = todo.filter((todo) => todo.id === id);
+    setTodo(newTodo);
+    setTodon([...todon, ...newTodon]);
+    console.log(newTodo);
+  };
+
+  const cancelTodon = (id) => {
+    const cancelTodon = todon.filter((todo) => todo.id !== id);
+    const addTodon = todon.filter((todo) => todo.id === id);
+    addTodon[0].isDone = false;
+    setTodon(cancelTodon);
+    setTodo([...todo, ...addTodon]);
+  };
+
+  const deleteTodon = (id) => {
+    const deleteTodon = todon.filter((todo) => todo.id !== id);
+    const addTodon = todon.filter((todo) => todo.id === id);
+    addTodon[0].isDone = true;
+    setTodon(deleteTodon);
+  };
+
   //추가 버튼 핸들러
-  const buttonClickHandler = () => {
+  const addTodo = () => {
     const newTodo = {
-      id: todo.length + 1,
+      id: new Date(),
       title: title,
       body: body,
+      isDone: false,
     };
 
     setTodo([...todo, newTodo]);
   };
 
-  const deleteButtonClickHandler = (id) => {
+  const dleteTodo = (id) => {
     const newTodo = todo.filter((todo) => todo.id !== id);
     setTodo(newTodo);
   };
@@ -59,43 +88,65 @@ function App() {
           <button
             type="button"
             className="btn btn-outline-info"
-            onClick={buttonClickHandler}
+            onClick={addTodo}
           >
             ✏️
           </button>
         </div>
+
         <div className="app-style">
-          {todo.map(function (item) {
-            return (
-              <Todo
-                key={item.id}
-                item={item}
-                deleteButtonClickHandler={deleteButtonClickHandler}
-              />
-            );
-          })}
+          <div className="table">
+            Working.. 🔥
+            {todo.map(function (item) {
+              return (
+                <div key={item.id} className="todolist">
+                  {item.title} <br /> {item.body} <br />
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger"
+                    onClick={() => dleteTodo(item.id)}
+                  >
+                    Delete 👋
+                  </button>
+                  <button
+                    onClick={() => addTodon(item.id)}
+                    type="button"
+                    className="btn btn-outline-success"
+                  >
+                    Success
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+          <div className="table">
+            Done..! 🎉
+            {todon.map(function (item) {
+              return (
+                <div key={item.id} className="todolist">
+                  {item.title} <br /> {item.body} <br />
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger"
+                    onClick={() => deleteTodon(item.id)}
+                  >
+                    Delete 👋
+                  </button>
+                  <button
+                    onClick={() => cancelTodon(item.id)}
+                    type="button"
+                    className="btn btn-outline-success"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-const Todo = ({ item, deleteButtonClickHandler }) => {
-  return (
-    <div key={item.id} className="todolist">
-      <h1>{item.title}</h1> <br /> {item.body} <br />
-      <button
-        type="button"
-        className="btn btn-outline-danger"
-        onClick={() => deleteButtonClickHandler(item.id)}
-      >
-        Delete 👋
-      </button>
-      <button type="button" class="btn btn-outline-success">
-        Success
-      </button>
-    </div>
-  );
-};
 
 export default App;
