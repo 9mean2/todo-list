@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./style/App.css";
+import Input from "./componets/Input.js";
 
 function App() {
   const [todo, setTodo] = useState([
@@ -20,11 +21,6 @@ function App() {
 
   const bodyChangeHandler = (event) => {
     setBody(event.target.value);
-  };
-
-  const resetInput = () => {
-    setTitle("");
-    setBody("");
   };
 
   // done으로 이동
@@ -80,25 +76,32 @@ function App() {
         <div className="add">
           <div className="input__container">
             Title
-            <input
+            {/* <input
               className="input"
               type="text"
               name="title"
               onChange={titleChangeHandler}
               value={title}
               required
+            /> */}
+            <Input
+              onChange={titleChangeHandler}
+              value={title}
+              name={title}
+              type={"text"}
             />
           </div>
           <div className="input__container">
             Contents{" "}
-            <input
+            {/* <input
               className="input"
               onChange={bodyChangeHandler}
               type="text"
               name="title"
               value={body}
               required
-            />
+            /> */}
+            <Input onChange={bodyChangeHandler} value={body} name={title} />
           </div>
           <br />
           <button

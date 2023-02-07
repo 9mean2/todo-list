@@ -103,12 +103,6 @@ html {
   margin: 0.5rem;
 }
 
-.input {
-  font-size: 15px;
-  color: rgb(77, 77, 77);
-  border-radius: 10px;
-}
-
 .table {
   margin-top: 5%;
   display: flex;
