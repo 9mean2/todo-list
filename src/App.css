@@ -121,3 +121,15 @@ html {
   flex-wrap: wrap;
   display: inline-block;
 }
+
+.slide-container {
+  transition: all 1s;
+}
+
+.slide-box {
+  float: left;
+}
+
+.slide-box img {
+  width: 100%;
+}

@@ -22,6 +22,12 @@ function App() {
     setBody(event.target.value);
   };
 
+  const resetInput = () => {
+    setTitle("");
+    setBody("");
+  };
+
+  // done으로 이동
   const addTodon = (id) => {
     const newTodo = todo.filter((todo) => todo.id !== id);
     const newTodon = todo.filter((todo) => todo.id === id);
@@ -30,6 +36,7 @@ function App() {
     console.log(newTodo);
   };
 
+  // 완료된 리스트 취소
   const cancelTodon = (id) => {
     const cancelTodon = todon.filter((todo) => todo.id !== id);
     const addTodon = todon.filter((todo) => todo.id === id);
@@ -38,10 +45,11 @@ function App() {
     setTodo([...todo, ...addTodon]);
   };
 
+  //완료된 리스트 삭제
   const deleteTodon = (id) => {
     const deleteTodon = todon.filter((todo) => todo.id !== id);
     const addTodon = todon.filter((todo) => todo.id === id);
-    addTodon[0].isDone = true;
+    addTodon[0].isDone = false;
     setTodon(deleteTodon);
   };
 
@@ -53,10 +61,12 @@ function App() {
       body: body,
       isDone: false,
     };
-
     setTodo([...todo, newTodo]);
+    setTitle("");
+    setBody("");
   };
 
+  // 작업중인 투두 삭제
   const dleteTodo = (id) => {
     const newTodo = todo.filter((todo) => todo.id !== id);
     setTodo(newTodo);
@@ -69,24 +79,30 @@ function App() {
 
         <div className="add">
           <div className="input__container">
-            Title{" "}
+            Title
             <input
               className="input"
-              value={title}
+              type="text"
+              name="title"
               onChange={titleChangeHandler}
+              value={title}
+              required
             />
           </div>
           <div className="input__container">
             Contents{" "}
             <input
               className="input"
-              value={body}
               onChange={bodyChangeHandler}
+              type="text"
+              name="title"
+              value={body}
+              required
             />
           </div>
           <br />
           <button
-            type="button"
+            type="submit"
             className="btn btn-outline-info"
             onClick={addTodo}
           >
@@ -119,29 +135,33 @@ function App() {
               );
             })}
           </div>
-          <div className="table">
-            Done..! 🎉
-            {todon.map(function (item) {
-              return (
-                <div key={item.id} className="todolist">
-                  {item.title} <br /> {item.body} <br />
-                  <button
-                    type="button"
-                    className="btn btn-outline-danger"
-                    onClick={() => deleteTodon(item.id)}
-                  >
-                    Delete 👋
-                  </button>
-                  <button
-                    onClick={() => cancelTodon(item.id)}
-                    type="button"
-                    className="btn btn-outline-success"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              );
-            })}
+
+          <div>
+            <div className="table">
+              Done..! 🎉
+              {todon.map(function (item) {
+                return (
+                  <div key={item.id} className="todolist">
+                    {item.title} <br /> {item.body} <br />
+                    <button
+                      type="button"
+                      className="btn btn-outline-danger"
+                      onClick={() => deleteTodon(item.id)}
+                    >
+                      Delete 👋
+                    </button>
+                    <button
+                      onClick={() => cancelTodon(item.id)}
+                      type="button"
+                      className="btn btn-outline-success"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+            <div></div>
           </div>
         </div>
       </div>
