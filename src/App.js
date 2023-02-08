@@ -75,7 +75,7 @@ function App() {
 
         <div className="add">
           <div className="input__container">
-            Title
+            Title{" "}
             {/* <input
               className="input"
               type="text"
@@ -106,7 +106,7 @@ function App() {
           <br />
           <button
             type="submit"
-            className="btn btn-outline-info"
+            className="btn btn-outline-danger"
             onClick={addTodo}
           >
             ✏️

@@ -81,6 +81,7 @@ html {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  box-shadow: 1px 0.5px 0.5px 0.5px rgb(0, 0, 0);
 }
 
 .todolist {
@@ -114,16 +115,4 @@ html {
   display: flex;
   flex-wrap: wrap;
   display: inline-block;
-}
-
-.slide-container {
-  transition: all 1s;
-}
-
-.slide-box {
-  float: left;
-}
-
-.slide-box img {
-  width: 100%;
 }
