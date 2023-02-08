@@ -12,7 +12,6 @@ function App() {
   ]);
 
   const [title, setTitle] = useState("");
-
   const [body, setBody] = useState("");
 
   const titleChangeHandler = (event) => {
@@ -36,7 +35,6 @@ function App() {
   const cancelTodon = (id) => {
     const cancelTodon = todon.filter((todo) => todo.id !== id);
     const addTodon = todon.filter((todo) => todo.id === id);
-    addTodon[0].isDone = false;
     setTodon(cancelTodon);
     setTodo([...todo, ...addTodon]);
   };
@@ -45,21 +43,25 @@ function App() {
   const deleteTodon = (id) => {
     const deleteTodon = todon.filter((todo) => todo.id !== id);
     const addTodon = todon.filter((todo) => todo.id === id);
-    addTodon[0].isDone = false;
     setTodon(deleteTodon);
   };
 
   //추가 버튼 핸들러
   const addTodo = () => {
-    const newTodo = {
-      id: new Date(),
-      title: title,
-      body: body,
-      isDone: false,
-    };
-    setTodo([...todo, newTodo]);
-    setTitle("");
-    setBody("");
+    if (title == "") {
+      alert("input을 채워주세요");
+      return;
+    } else {
+      const newTodo = {
+        id: new Date(),
+        title: title,
+        body: body,
+        isDone: false,
+      };
+      setTodo([...todo, newTodo]);
+      setTitle("");
+      setBody("");
+    }
   };
 
   // 작업중인 투두 삭제
